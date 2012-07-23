@@ -50,6 +50,9 @@ import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
@@ -65,6 +68,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Slog;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.IWindowManager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -130,6 +134,29 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected int mCurrentUserId = 0;
 
     protected FrameLayout mStatusBarContainer;
+
+    // Quick nav bar
+    QuickNavbarPanel mQuickNavbarPanel;
+    View mQuickNavbarTrigger;
+
+    // Policy
+    public NetworkController mNetworkController;
+    public BatteryController mBatteryController;
+    public SignalClusterView mSignalCluster;
+    public Clock mClock;
+
+    // left-hand icons 
+    public LinearLayout mStatusIcons;
+
+    // Statusbar view container
+    public ViewGroup mBarView;
+
+    // Color fields
+    private Canvas mCurrentCanvas;
+    private Canvas mNewCanvas;
+    private TransitionDrawable mTransition;
+    public ColorUtils.ColorSettingInfo mLastIconColor;
+    public ColorUtils.ColorSettingInfo mLastBackgroundColor;
 
     // UI-specific methods
 
@@ -229,6 +256,45 @@ public abstract class BaseStatusBar extends SystemUI implements
                 Settings.System.STATUS_BAR_NOTIF_COUNT, 0) == 1;
 
         mStatusBarContainer = new FrameLayout(mContext);
+
+        // Quick navigation bar trigger area
+        mQuickNavbarTrigger = new View(mContext);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                50,
+                WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL,
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+                        | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                        | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                        | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM
+                        | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH,
+                PixelFormat.TRANSLUCENT);
+
+        lp.gravity = Gravity.BOTTOM;
+
+        mQuickNavbarTrigger.setOnTouchListener(new QuickNavbarTouchListener());
+        mWindowManager.addView(mQuickNavbarTrigger, lp);
+
+        // Quick navigation bar panel
+        mQuickNavbarPanel = (QuickNavbarPanel) View.inflate(mContext,
+                R.layout.quick_navigation_panel, null);
+        lp = new WindowManager.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL,
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+                        | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM
+                        | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH
+                        | WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+                PixelFormat.TRANSLUCENT);
+        lp.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+        lp.setTitle("QuickNavbarPanel");
+        lp.windowAnimations = android.R.style.Animation;
+
+        mQuickNavbarPanel.setBar(this);
+        mQuickNavbarPanel.setHandler(mHandler);
+
+        mWindowManager.addView(mQuickNavbarPanel, lp);
 
         // Connect in to the status bar manager service
         StatusBarIconList iconList = new StatusBarIconList();
@@ -652,6 +718,72 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
     }
 
+    private class QuickNavbarTouchListener implements View.OnTouchListener {
+        public boolean onTouch(View v, MotionEvent event) {
+            float initialX = 0;
+            float initialY = 0;
+            float deltaX = 0;
+            float deltaY = 0;
+
+            final int action = event.getAction();
+            final boolean panelShowing = mQuickNavbarPanel.isShowing();
+
+            if (!panelShowing) {
+                switch(action) {
+                    case MotionEvent.ACTION_DOWN:       
+                        // reset deltaX and deltaY
+                        deltaX = deltaY = 0;
+
+                        // get initial positions
+                        initialX = event.getX();
+                        initialY = event.getY();
+                    break;
+                    case MotionEvent.ACTION_MOVE:
+                        deltaX = event.getX() - initialX;
+                        deltaY = event.getY() - initialY;
+
+                        // swipe up event
+                        if(deltaY < 0) {
+                            WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
+                                    ViewGroup.LayoutParams.MATCH_PARENT,
+                                    300,
+                                    (int)event.getX() - 150,
+                                    0,
+                                    WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL,
+                                    WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+                                        | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM
+                                        | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH
+                                        | WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+<<<<<<< HEAD
+                                    PixelFormat.TRANSLUCENT);
+                            lp.gravity = Gravity.BOTTOM | Gravity.LEFT;
+                            lp.setTitle("QuickNavbarPanel");
+                            lp.windowAnimations = android.R.style.Animation;
+
+                            mWindowManager.updateViewLayout(mQuickNavbarPanel, lp);
+                            event.setAction(MotionEvent.ACTION_DOWN);
+                            mQuickNavbarPanel.onTouchEvent(event);
+                        }
+=======
+                                PixelFormat.TRANSLUCENT);
+                        lp.gravity = Gravity.BOTTOM | Gravity.LEFT;
+                        lp.setTitle("QuickNavbarPanel");
+                        lp.windowAnimations = android.R.style.Animation;
+                        mWindowManager.updateViewLayout(mQuickNavbarPanel, lp);
+                        mQuickNavbarPanel.show(true);
+
+                        event.setAction(MotionEvent.ACTION_DOWN);
+                        mQuickNavbarPanel.onTouchEvent(event);
+>>>>>>> dfbc390... Per app color on quick navbar
+                    break;
+                }
+            } else {
+                return mQuickNavbarPanel.onTouchEvent(event);
+            }
+            return false;
+        }
+    }
+
     protected View.OnTouchListener mRecentsPreloadOnTouchListener = new View.OnTouchListener() {
         // additional optimization when we have software system buttons - start loading the recent
         // tasks on touch down
@@ -725,11 +857,11 @@ public abstract class BaseStatusBar extends SystemUI implements
                  }
                  break;
              case MSG_CLOSE_SEARCH_PANEL:
-                 if (DEBUG) Slog.d(TAG, "closing search panel");
-                 if (mSearchPanelView != null) {
-                     mSearchPanelView.show(false, true);
-                 }
-                 break;
+                if (DEBUG) Slog.d(TAG, "closing search panel");
+                if (mSearchPanelView != null && mSearchPanelView.isShowing()) {
+                    mSearchPanelView.show(false, true);
+                }
+                break;
             }
         }
     }
