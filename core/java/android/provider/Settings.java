@@ -3189,7 +3189,7 @@ public final class Settings {
         public static final String PIE_CONTROLS = "pie_controls";
 
         /**
-         * Pie menu, should default to 0 (no, show only when needed)
+         * Pie menu, should default to 1 (yes, show) 
          * @hide
          */
         public static final String PIE_MENU = "pie_menu";
@@ -3401,6 +3401,13 @@ public final class Settings {
         public static final String POWER_MENU_PROFILES_ENABLED = "power_menu_profiles_enabled";
 
         /**
+         * Pie menu, should default to 0 (no, show only when needed)
+         * Restart Launcher
+         * @hide
+         */
+        public static final String EXPANDED_DESKTOP_RESTART_LAUNCHER = "expanded_desktop_restart_launcher";
+
+        /**
          * Whether power menu airplane toggle is enabled
          * @hide
          */
@@ -3408,6 +3415,7 @@ public final class Settings {
 
         /**
          * Whether power menu user switcher is enabled
+         * Pie menu, should default to 1 (yes, show)
          * @hide
          */
         public static final String POWER_MENU_USER_ENABLED = "power_menu_user_enabled";
