@@ -285,7 +285,7 @@ public class PieMenu extends FrameLayout {
         mStatusMode = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_MODE, 2);
         mPieSize = Settings.System.getFloat(mContext.getContentResolver(),
-                Settings.System.PIE_SIZE, 1f);
+                Settings.System.PIE_SIZE, 0.9f);
         mPieGap = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_GAP, 1);
         mHapticFeedback = Settings.System.getInt(mContext.getContentResolver(),
