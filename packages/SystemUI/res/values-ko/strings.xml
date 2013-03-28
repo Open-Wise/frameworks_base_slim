@@ -203,4 +203,72 @@
     <string name="quick_settings_brightness_dialog_auto_brightness_label" msgid="5064982743784071218">"자동"</string>
     <string name="status_bar_help_title" msgid="1199237744086469217">"알림이 여기에 표시됨"</string>
     <string name="status_bar_help_text" msgid="7874607155052076323">"아래로 스와이프하여 언제든 액세스하세요."\n"한 번 더 아래로 스와이프하면 시스템 관리로 이동합니다."</string>
+    
+    <!-- QuickSettings -->
+    <string name="quick_settings_gps">GPS</string>
+    <string name="quick_settings_gps_off">GPS 꺼짐</string>
+    <string name="quick_settings_power">전원</string>
+    <string name="quick_settings_ringer_on">소리 켜짐</string>
+    <string name="quick_settings_ringer_off">소리 꺼짐</string>
+    <string name="quick_settings_vibration_on">진동 켜짐</string>
+    <string name="quick_settings_vibration_off">진동 꺼짐</string>
+    <string name="quick_settings_label_enabled">켜짐</string>
+    <string name="quick_settings_label_disabled">꺼짐</string>
+    <string name="quick_settings_ringer_normal">소리</string>
+    <string name="quick_settings_lockscreen">잠금화면</string>
+    <string name="quick_settings_network_type">네트워크 모드</string>
+    <string name="quick_settings_report_bug">버그 신고</string>
+    <string name="quick_settings_mobile_data_on">데이터 켜짐</string>
+    <string name="quick_settings_mobile_data_off">데이터 꺼짐</string>
+    <string name="quick_settings_reboot">시스템 재시작</string>
+    <string name="quick_settings_reboot_recovery">리커버리로 재시작</string>
+    <string name="quick_settings_sync">동기화 켜짐</string>
+    <string name="quick_settings_sync_off">동기화 꺼짐</string>
+    <string name="quick_settings_torch">손전등 켜짐</string>
+    <string name="quick_settings_torch_off">손전등 꺼짐</string>
+    <string name="quick_settings_nfc">NFC</string>
+    <string name="quick_settings_nfc_off">NFC 꺼짐</string>
+    <string name="quick_settings_fcharge">빠른 충전</string>
+    <string name="quick_settings_screen_timeout">타임아웃</string>
+    <string name="quick_settings_screen_timeout_summary">%1$d %2$s</string>
+    <string name="quick_settings_usb_tether_off_label">연결 해제됨</string>
+    <string name="quick_settings_usb_tether_connected_label">테더링 꺼짐</string>
+    <string name="quick_settings_usb_tether_on_label">테더링 켜짐</string>
+    <string name="quick_settings_wifiap">Wi-Fi AP</string>
+    <string name="quick_settings_wifiap_off">Wi-Fi AP 꺼짐</string>
+    <string name="quick_settings_lte">LTE</string>
+    <string name="quick_settings_lte_off">LTE 꺼짐</string>
+    <string name="quick_settings_volume">볼륨</string>
+    <!-- Expanded desktop strings break the rules a bit - the icon identifies the feature, the string indicates current state -->
+    <string name="quick_settings_expanded_desktop">확장됨</string>
+    <string name="quick_settings_expanded_desktop_off">꺼짐</string>
+
+    <!--  Target/Action Strings -->
+    <string name="action_home">홈으로 가기</string>
+    <string name="action_back">뒤로가기</string>
+    <string name="action_recents">최근앱 창</string>
+    <string name="action_screenshot">스크린샷 찍기</string>
+    <string name="action_menu">메뉴</string>
+    <string name="action_ime">IME 변경기 열기</string>
+    <string name="action_kill">어플 종료하기</string>
+    <string name="action_power">전원</string>
+    <string name="action_notifications">알림창</string>
+    <string name="action_lastapp">최근 실행 앱</string>
+    <string name="action_none">없음</string>
+    <string name="toggle_widgets">위젯 - 토글</string>
+    <string name="toggle_ring_vib">소리/진동 - 토글</string>
+    <string name="toggle_ring_silent">소리/무음 - 토글</string>
+    <string name="toggle_ring_vib_silent">소리/진동/무음 - 토글</string>
+    <string name="widgets">위젯</string>
+    <string name="app_killed_message">어플 종료됨</string>
+
+    <!-- Label in drop down to identify brightness slider -->
+    <string name="brightness_label">밝기</string>
+
+    <!-- Recents Ram Bar -->
+    <string name="memory">RAM</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of background processes -->
+    <string name="service_free_mem"><xliff:g id="memory">%1$s</xliff:g> 사용 가능</string>
+    <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
+    <string name="service_used_mem"><xliff:g id="memory">%1$s</xliff:g> 사용됨</string>
 </resources>
