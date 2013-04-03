@@ -1451,14 +1451,7 @@
     <!-- Reboot Progress Dialog. This is shown if the user chooses to reboot the phone. -->
 
     <!-- label for item that screenshots in phone options dialog -->
-    <string name="global_action_screenshot">스크린샷 찍기</string>
-
-    <!-- label for item that toggles expand desktop mode -->
-    <string name="global_actions_toggle_expanded_desktop_mode">데스크톱 확장</string>
-    <!-- status message in phone options dialog for when expand desktop mode is on -->
-    <string name="global_actions_expanded_desktop_mode_on_status">켜짐</string>
-    <!-- status message in phone options dialog for when expand desktop mode is off -->
-    <string name="global_actions_expanded_desktop_mode_off_status">꺼짐</string>
+    <string name="global_action_screenshot">스크린샷</string>
 
     <!-- Button to reboot the phone, within the Reboot Options dialog -->
     <string name="reboot_reboot">재시작</string>
@@ -1466,12 +1459,6 @@
     <string name="reboot_recovery">리커버리</string>
     <!-- Button to reboot the phone into bootloader, within the Reboot Options dialog -->
     <string name="reboot_bootloader">부트로더</string>
-    <!-- Button to reboot the phone into bootmenu, within the Reboot Options dialog -->
-    <string name="reboot_bootmenu">부트메뉴</string>
-    <!-- Button to reboot the phone into fastboot, within the Reboot Options dialog -->
-    <string name="reboot_fastboot">패스트붓</string>
-    <!-- Button to reboot the phone into download, within the Reboot Options dialog -->
-    <string name="reboot_download">다운로드</string>
 
     <!-- Reboot Progress Dialog. This is shown if the user chooses to reboot the phone. -->
     <string name="reboot_progress">재시작 중\u2026</string>
@@ -1481,7 +1468,6 @@
     <string name="global_action_reboot">재시작</string>
 
     <!-- label for item that opens the profile choosing dialog -->
-    <string name="global_action_choose_profile">프로파일</string>
     <string name="lockscreen_discharging">현재 배터리 <xliff:g id="number">%d</xliff:g><xliff:g id="percent">%%</xliff:g></string>
     
     <!-- Long-press back kill application -->
