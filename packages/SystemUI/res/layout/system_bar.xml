@@ -28,25 +28,9 @@
         android:layout_height="@*android:dimen/system_bar_height"
         android:layout_gravity="bottom"
         >
-
         <RelativeLayout
             android:id="@+id/bar_contents"
             android:layout_width="match_parent"
-
-        <!-- navigation controls -->
-        <LinearLayout
-               android:id="@+id/navigationArea"
-               android:layout_width="0dp"
-               android:layout_height="match_parent"
-               android:layout_weight="45" >
-               <include layout="@layout/navigation_bar"
-                    android:id="@+id/navigationBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-         </LinearLayout>
-
-        <!-- fake space bar zone -->
-        <LinearLayout
             android:layout_height="match_parent"
             android:clipChildren="false"
             >

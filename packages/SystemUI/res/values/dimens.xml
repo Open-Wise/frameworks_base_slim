@@ -212,61 +212,8 @@
     <!-- For phones, this is close_handle_height + header_height -->
     <dimen name="peek_height">84dp</dimen>
 
-<<<<<<< HEAD
     <!-- Notification Shortcuts -->
     <dimen name="notification_shortcuts_close_handle_height">28dp</dimen>
     <dimen name="notification_shortcuts_spacing_height">88dp</dimen>
     <dimen name="notification_shortcuts_drawer_margin">56dp</dimen>
-
-    <!-- Quick Nav Panel -->
-    <dimen name="qc_radius_start">65dip</dimen>
-    <dimen name="qc_radius_increment">80dip</dimen>
-    <dimen name="qc_slop">10dip</dimen>
-    <dimen name="qc_touch_offset">15dip</dimen>
-    <dimen name="qc_tab_title_height">24dip</dimen>
-    <dimen name="qc_thumb_width">150dip</dimen>
-    <dimen name="qc_thumb_height">100dip</dimen>
-    <dimen name="qc_item_size">40dip</dimen>
-=======
-    <!--  Tablet UI Stuff -->
-    <!-- The minimum height of the notification panel window -->
-    <dimen name="notification_panel_min_height">300dp</dimen>
-    <!-- Bottom margin (from display edge) for status bar panels -->
-    <dimen name="panel_float">10dp</dimen>
-    <!-- The width of the ticker, including the icon -->
-    <dimen name="notification_ticker_width">280dp</dimen>
-    <!-- The width of the notification panel window -->
-    <dimen name="notification_panel_width">300dp</dimen>
-    <!-- The height of the notification panel title -->
-    <dimen name="notification_panel_title_height">130dp</dimen>
-    <!--  Amount of Margin to offset NavRing in Portrait Mode -->
-    <dimen name="navring_left_margin_port">-600dp</dimen>
-    <!--  Amount of Margin to offset NavRing in Landscape Mode -->
-    <dimen name="navring_left_margin_land">-800dp</dimen>
-    <!--  Height of NavRing in Tablet Mode Landscape -->
-    <dimen name="navring_height_tablet_landscape">300dp</dimen>
-    <!--  Height of NavRing in Tablet Mode Portrait -->
-    <dimen name="navring_height_tablet_portrait">250dp</dimen>
-    <!--  Radius of NavRing in Tablet Mode Landscape -->
-    <dimen name="navring_radius_tablet_landscape">300dp</dimen>
-    <!--  Radius of NavRing in Tablet Mode Landscape -->
-    <dimen name="navring_radius_tablet_portrait">300dp</dimen>
-
-    <!-- Height of the quick navigation bar trigger -->
-    <dimen name="quick_nav_trigger_height">10dp</dimen>
-
-    <!-- Height of the quick navigation bar-->
-    <dimen name="quick_nav_panel_height">150dp</dimen>
-
-    <!-- Quick Nav Panel -->
-    <dimen name="qc_radius_start">65dp</dimen>
-    <dimen name="qc_radius_increment">80dp</dimen>
-    <dimen name="qc_slop">10dp</dimen>
-    <dimen name="qc_touch_offset">15dp</dimen>
-    <dimen name="qc_tab_title_height">24dp</dimen>
-    <dimen name="qc_thumb_width">150dp</dimen>
-    <dimen name="qc_thumb_height">100dp</dimen>
-    <dimen name="qc_item_size">40dp</dimen>
-
->>>>>>> dfbc390... Per app color on quick navbar
 </resources>
