@@ -3341,12 +3341,6 @@ public final class Settings {
         public static final String LOCKSCREEN_LONG_BACK_ACTION = "lockscreen_long_back_action";
 
         /**
-         * Restart Launcher
-         * @hide
-         */
-        public static final String EXPANDED_DESKTOP_RESTART_LAUNCHER = "expanded_desktop_restart_launcher";
-
-        /**
          * Action for long-pressing home button on lock screen
          * @hide
          */
