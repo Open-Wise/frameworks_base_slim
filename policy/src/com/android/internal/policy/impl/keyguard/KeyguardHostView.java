@@ -1466,17 +1466,33 @@ public class KeyguardHostView extends KeyguardViewBase {
     }
 
     private void enableUserSelectorIfNecessary() {
-        if (!UserManager.supportsMultipleUsers()) return; // device doesn't support multi-user mode
-
+        if (!UserManager.supportsMultipleUsers()) {
+            return; // device doesn't support multi-user mode
+        }
         final UserManager um = (UserManager) mContext.getSystemService(Context.USER_SERVICE);
-        if (um == null) return;
+        if (um == null) {
+            Throwable t = new Throwable();
+            t.fillInStackTrace();
+            Log.e(TAG, "user service is null.", t);
+            return;
+        }
 
         // if there are multiple users, we need to enable to multi-user switcher
         final List<UserInfo> users = um.getUsers(true);
-        if (users == null) return;
+        if (users == null) {
+            Throwable t = new Throwable();
+            t.fillInStackTrace();
+            Log.e(TAG, "list of users is null.", t);
+            return;
+        }
 
         final View multiUserView = findViewById(R.id.keyguard_user_selector);
-        if (multiUserView == null) return;
+        if (multiUserView == null) {
+            Throwable t = new Throwable();
+            t.fillInStackTrace();
+            Log.e(TAG, "can't find user_selector in layout.", t);
+            return;
+        }
 
         if (users.size() > 1) {
             if (multiUserView instanceof KeyguardMultiUserSelectorView) {
@@ -1510,6 +1526,14 @@ public class KeyguardHostView extends KeyguardViewBase {
                     }
                 };
                 multiUser.setCallback(callback);
+            } else {
+                Throwable t = new Throwable();
+                t.fillInStackTrace();
+                if (multiUserView == null) {
+                    Log.e(TAG, "could not find the user_selector.", t);
+                } else {
+                    Log.e(TAG, "user_selector is the wrong type.", t);
+                }
             }
         }
     }
