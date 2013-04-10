@@ -3310,6 +3310,12 @@ public final class Settings {
         public static final String PIE_CENTER = "pie_center";
 
         /**
+         * Restart launcher when pie is on.
+         * @hide
+         */
+        public static final String EXPANDED_DESKTOP_RESTART_LAUNCHER = "expanded_desktop_restart_launcher";
+
+        /**
          * Whether to attempt to dim the LED color during quiet hours.
          * @hide
          */
