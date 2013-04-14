@@ -1910,6 +1910,11 @@ public final class Settings {
         public static final String SAFE_HEADSET_VOLUME_RESTORE = "safe_headset_volume_restore";
 
         /**
+         * @hide
+         */
+        public static final String HEADSET_CONNECT_PLAYER = "headset_connect_player";
+
+        /**
          * Master volume (float in the range 0.0f to 1.0f).
          * @hide
          */
