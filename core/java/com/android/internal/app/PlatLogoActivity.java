@@ -64,14 +64,14 @@ public class PlatLogoActivity extends Activity {
         lp.gravity = Gravity.CENTER_HORIZONTAL;
         lp.bottomMargin = (int) (-4*metrics.density);
 
-        mIsSlim = SystemProperties.get("ro.slim.version") != null;
+        mIsSlim = SystemProperties.get("ro.mirage.version") != null;
 
         TextView tv = new TextView(this);
         if (light != null) tv.setTypeface(light);
         tv.setTextSize(1.25f*size);
         tv.setTextColor(0xFFFFFFFF);
         tv.setShadowLayer(4*metrics.density, 0, 2*metrics.density, 0x66000000);
-        tv.setText((mIsSlim ? "SlimBean " : "Android ") + Build.VERSION.RELEASE);
+        tv.setText((mIsSlim ? "MIRAGE " : "Android ") + Build.VERSION.RELEASE);
         view.addView(tv, lp);
 
         tv = new TextView(this);
@@ -79,7 +79,7 @@ public class PlatLogoActivity extends Activity {
         tv.setTextSize(size);
         tv.setTextColor(0xFFFFFFFF);
         tv.setShadowLayer(4*metrics.density, 0, 2*metrics.density, 0x66000000);
-        tv.setText("JELLY BEAN");
+        tv.setText("OPEN WISE");
         view.addView(tv, lp);
 
         return view;
