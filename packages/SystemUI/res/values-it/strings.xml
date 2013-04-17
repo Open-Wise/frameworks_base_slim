@@ -131,7 +131,7 @@
     <string name="accessibility_no_sim">Nessuna SIM presente.</string>
     <string name="accessibility_bluetooth_tether">Tethering Bluetooth.</string>
     <string name="accessibility_airplane_mode">Modalità aereo.</string>
-    <string name="accessibility_battery_level"><xliff:g id="number">%d</xliff:g> Batteria cento.</string>
+    <string name="accessibility_battery_level">Batteria <xliff:g id="number">%d</xliff:g> percento.</string>
     <string name="accessibility_settings_button">Impostazioni di sistema.</string>
     <string name="accessibility_notifications_button">Notifiche.</string>
     <string name="accessibility_remove_notification">Cancella notifica.</string>
@@ -152,6 +152,7 @@
     <string name="accessibility_quick_settings_airplane">Modalità aereo: <xliff:g id="STATE">%s</xliff:g>.</string>
     <string name="accessibility_quick_settings_bluetooth">Bluetooth: <xliff:g id="STATE">%s</xliff:g>.</string>
     <string name="accessibility_quick_settings_alarm">Allarme impostato per: <xliff:g id="TIME">%s</xliff:g>.</string>
+    <string name="qs_shortcut_long_press">Pressione prolungata</string>
     <string name="data_usage_disabled_dialog_3g_title">Dati 2G-3G disattivati</string>
     <string name="data_usage_disabled_dialog_4g_title">Dati 4G disattivati</string>
     <string name="data_usage_disabled_dialog_mobile_title">Dati mobili disattivati</string>
