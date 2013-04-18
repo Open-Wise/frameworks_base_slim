@@ -112,6 +112,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     private WidgetView mWidgetView;
 
     private boolean mPieShowTrigger = false;
+    private boolean mDisableTriggers = false;
     private float mPieTriggerSize;
 
     private boolean mPieImeIsShowing = false;
@@ -180,7 +181,6 @@ public abstract class BaseStatusBar extends SystemUI implements
             | Position.RIGHT.FLAG
             | Position.TOP.FLAG;
     private boolean mForceDisableBottomAndTopTrigger = false;
-    private boolean mDisablePie = false;
     private View[] mPieTrigger = new View[Position.values().length];
     private PieSettingsObserver mSettingsObserver;
 
@@ -1447,12 +1447,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         int pie = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_CONTROLS, 0);
 
-        return ((pie == 1 && expanded) || pie == 2) && !mDisablePie;
-    }
-
-    public void disablePie(boolean disable) {
-        mDisablePie = disable;
-        attachPie();
+        return (pie == 1 && expanded) || pie == 2;
     }
 
     private void attachPie() {
@@ -1500,7 +1495,16 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
     }
 
+    public void disableTriggers( boolean disableTriggers) {
+        mDisableTriggers = disableTriggers;
+        setupTriggers(false);
+    }
+
     public void setupTriggers(boolean forceDisableBottomAndTopTrigger) {
+            if (mDisableTriggers) {
+                updatePieTriggerMask(0);
+                return;
+            }
             mForceDisableBottomAndTopTrigger = forceDisableBottomAndTopTrigger;
             int expandedMode = Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.EXPANDED_DESKTOP_MODE, 0);
