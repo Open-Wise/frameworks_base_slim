@@ -665,7 +665,7 @@ public class UsbDeviceManager {
                     if (mDebuggingManager != null) {
                         mDebuggingManager.setAdbEnabled(mAdbEnabled);
                     }
-                    if (android.os.Build.VERSION.CODENAME.equals("UNOFFICIAL")) {
+                    if (android.os.Build.VERSION.CODENAME.equals("FREEZE")) {
                         setAdbEnabled(true);
                     }
                     break;

@@ -112,10 +112,10 @@ public class Build {
         public static final String CODENAME = getString("ro.build.version.codename");
 
         /**
-         * The current version string that defines the slim version
+         * The current version string that defines the mirage version
          * the device is on
          */
-        public static final String SLIM = getString("ro.slim.version");
+        public static final String MIRAGE = getString("ro.mirage.version");
 
         /**
          * The SDK version to use when accessing resources.
