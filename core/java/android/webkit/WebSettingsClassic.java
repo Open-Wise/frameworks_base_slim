@@ -89,7 +89,6 @@ public class WebSettingsClassic extends WebSettings {
     // HTML5 API flags
     private boolean         mAppCacheEnabled = false;
     private boolean         mDatabaseEnabled = false;
-    private boolean         mWebSocketsEnabled = false;
     private boolean         mDomStorageEnabled = false;
     private boolean         mWorkersEnabled = false;  // only affects V8.
     private boolean         mGeolocationEnabled = true;
@@ -1285,17 +1284,6 @@ public class WebSettingsClassic extends WebSettings {
     }
 
     /**
-     * @see android.webkit.WebSettings#setWebSocketsEnabled(boolean)
-     */
-    @Override
-    public synchronized void setWebSocketsEnabled(boolean flag) {
-       if (mWebSocketsEnabled != flag) {
-           mWebSocketsEnabled = flag;
-           postSync();
-       }
-    }
-
-    /**
      * @see android.webkit.WebSettings#setDomStorageEnabled(boolean)
      */
     @Override
@@ -1328,14 +1316,6 @@ public class WebSettingsClassic extends WebSettings {
     @Override
     public synchronized boolean getDatabaseEnabled() {
         return mDatabaseEnabled;
-    }
-
-    /**
-     * @see android.webkit.WebSettings#getWebSocketsEnabled()
-     */
-    @Override
-    public synchronized boolean getWebSocketsEnabled() {
-        return mWebSocketsEnabled;
     }
 
     /**
