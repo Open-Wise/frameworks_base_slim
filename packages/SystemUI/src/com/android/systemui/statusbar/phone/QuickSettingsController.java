@@ -83,6 +83,7 @@ public class QuickSettingsController {
     public static final String TILE_NFC = "toggleNfc";
     public static final String TILE_PROFILE = "toggleProfile";
     public static final String TILE_QUIETHOURS = "toggleQuietHours";
+    public static final String TILE_QUICKRECORD = "toggleQuickRecord"; 
     public static final String TILE_REBOOT = "toggleReboot";
     public static final String TILE_RINGER = "toggleSound";
     public static final String TILE_SCREENTIMEOUT = "toggleScreenTimeout";
@@ -136,6 +137,7 @@ public class QuickSettingsController {
         TILES_CLASSES.put(TILE_WIFI, "com.android.systemui.quicksettings.WiFiTile");
         TILES_CLASSES.put(TILE_WIFIAP, "com.android.systemui.quicksettings.WifiAPTile");
         TILES_CLASSES.put(TILE_WIFIDISPLAY, "com.android.systemui.quicksettings.WiFiDisplayTile");
+        TILES_CLASSES.put(TILE_QUICKRECORD, "com.android.systemui.quicksettings.QuickRecordToggle");
     }
 
     private static final String TILE_DELIMITER = "|";

@@ -556,6 +556,13 @@
     <!-- Expanded desktop strings break the rules a bit - the icon identifies the feature, the string indicates current state -->
     <string name="quick_settings_expanded_desktop">Expanded</string>
     <string name="quick_settings_expanded_desktop_off">Normal</string>
+ 
+    <!-- Qucik Record Tile -->
+    <string name="quick_settings_quickrecord">Quick Record</string>
+    <string name="quick_settings_nofile">Long Press To Record</string>
+    <string name="quick_settings_recording">Recording...</string>
+    <string name="quick_settings_recordingcap">Recording Captured</string>
+    <string name="quick_settings_playing">Playing...</string>
 
     <!-- Title of help text shown when the notification panel is pulled down for the very first time. [CHAR LIMIT=NONE] -->
     <string name="status_bar_help_title">Notifications appear here</string>
