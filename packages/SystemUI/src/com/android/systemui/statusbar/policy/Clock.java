@@ -352,4 +352,3 @@ public class Clock extends TextView {
             setVisibility(View.GONE);
     }
 }
-

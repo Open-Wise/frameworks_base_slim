@@ -55,6 +55,7 @@ public class CircleBattery extends ImageView {
     private Handler mHandler;
     private Context mContext;
     private BatteryReceiver mBatteryReceiver = null;
+    private SettingsObserver mObserver;
 
     // state variables
     private boolean mAttached;      // whether or not attached to a window
@@ -134,6 +135,10 @@ public class CircleBattery extends ImageView {
                     false, this);
         }
 
+        public void unobserve() {
+            mContext.getContentResolver().unregisterContentObserver(this);
+        }
+
         @Override
         public void onChange(boolean selfChange) {
             updateSettings();
@@ -207,6 +212,15 @@ public class CircleBattery extends ImageView {
 
         mContext = context;
         mHandler = new Handler();
+<<<<<<< HEAD
+=======
+
+        batteryStyle = (Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.STATUSBAR_BATTERY_ICON, 0));
+
+        mObserver = new SettingsObserver(mHandler);
+
+>>>>>>> 6d3119b... Fix SystemUI memory leaks on theme changes.
         mBatteryReceiver = new BatteryReceiver(mContext);
         updateSettings();
     }
@@ -216,6 +230,7 @@ public class CircleBattery extends ImageView {
         super.onAttachedToWindow();
         if (!mAttached) {
             mAttached = true;
+            mObserver.observe();
             mBatteryReceiver.updateRegistration();
             mSettingsObserver = new SettingsObserver(mHandler);
             mSettingsObserver.observe();
@@ -229,6 +244,7 @@ public class CircleBattery extends ImageView {
         super.onDetachedFromWindow();
         if (mAttached) {
             mAttached = false;
+            mObserver.unobserve();
             mBatteryReceiver.updateRegistration();
             mContext.getContentResolver().unregisterContentObserver(mSettingsObserver);
             mRectLeft = null;   // makes sure, size based variables get
