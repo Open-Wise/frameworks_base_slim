@@ -346,6 +346,10 @@ public final class PowerManagerService extends IPowerManager.Stub
     // Use 0 if there is no adjustment.
     private float mScreenAutoBrightnessAdjustmentSetting;
 
+    // Alternative auto panel value for special devices
+    // default = -1, set over config.xml
+    private int mPanelAutoValue = -1;
+
     // The screen brightness mode.
     // One of the Settings.System.SCREEN_BRIGHTNESS_MODE_* constants.
     private int mScreenBrightnessModeSetting;
@@ -434,6 +438,8 @@ public final class PowerManagerService extends IPowerManager.Stub
         mDisplayBlanker.unblankAllDisplays();
 
         mAutoBrightnessHandler = new AutoBrightnessHandler(context);
+        mPanelAutoValue = mContext.getResources().getInteger(
+                com.android.internal.R.integer.config_panelAutoBrightnessValue);
 
     }
 
@@ -605,8 +611,10 @@ public final class PowerManagerService extends IPowerManager.Stub
         mScreenBrightnessModeSetting = Settings.System.getIntForUser(resolver,
                 Settings.System.SCREEN_BRIGHTNESS_MODE,
                 Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL, UserHandle.USER_CURRENT);
-        if (oldScreenBrightnessModeSetting != mScreenBrightnessModeSetting) {
-            mAutoBrightnessHandler.onAutoBrightnessChanged(mScreenBrightnessModeSetting);
+        // Set autobrightness/brigthness mode change for devices different then default
+        if (oldScreenBrightnessModeSetting != mScreenBrightnessModeSetting
+                && mPanelAutoValue > -1) {
+            mAutoBrightnessHandler.onAutoBrightnessChanged(mScreenBrightnessModeSetting, mPanelAutoValue);
         }
 
         mDirty |= DIRTY_SETTINGS;
