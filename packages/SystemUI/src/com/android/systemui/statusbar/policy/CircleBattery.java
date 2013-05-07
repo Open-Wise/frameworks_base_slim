@@ -212,15 +212,7 @@ public class CircleBattery extends ImageView {
 
         mContext = context;
         mHandler = new Handler();
-<<<<<<< HEAD
-=======
-
-        batteryStyle = (Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_ICON, 0));
-
         mObserver = new SettingsObserver(mHandler);
-
->>>>>>> 6d3119b... Fix SystemUI memory leaks on theme changes.
         mBatteryReceiver = new BatteryReceiver(mContext);
         updateSettings();
     }

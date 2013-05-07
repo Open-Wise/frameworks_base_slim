@@ -61,8 +61,6 @@ public class SignalClusterView
 
     Handler mHandler;
 
-    private SettingsObserver mSettingsObserver;
-
     class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
             super(handler);
@@ -96,12 +94,7 @@ public class SignalClusterView
         super(context, attrs, defStyle);
 
         mHandler = new Handler();
-<<<<<<< HEAD
-        mSettingsObserver = new SettingsObserver(mHandler);
-=======
-
         mObserver = new SettingsObserver(mHandler);
->>>>>>> 6d3119b... Fix SystemUI memory leaks on theme changes.
     }
 
     public void setNetworkController(NetworkController nc) {
