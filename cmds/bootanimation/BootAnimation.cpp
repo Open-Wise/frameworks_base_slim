@@ -89,7 +89,7 @@ sp<SurfaceComposerClient> BootAnimation::session() const {
 void BootAnimation::binderDied(const wp<IBinder>& who)
 {
     // woah, surfaceflinger died!
-    ALOGD("SurfaceFlinger died, exiting...");
+    //ALOGD("SurfaceFlinger died, exiting...");
 
     // calling requestExit() is not enough here because the Surface code
     // might be blocked on a condition variable that will never be updated.
