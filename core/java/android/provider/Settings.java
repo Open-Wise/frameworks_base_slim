@@ -1906,7 +1906,7 @@ public final class Settings {
          * Whether to prevent loud volume levels when headset is first plugged in.
          * @hide
          */
-        public static final String SAFE_HEADSET_VOLUME_RESTORE = "safe_headset_volume_restore";
+        public static final String SAFE_HEADSET_VOLUME = "safe_headset_volume";
 
         /**
          * @hide
@@ -3306,7 +3306,7 @@ public final class Settings {
          *
          * @hide
          */
-        public static final String TOGGLE_NOTIFICATION_SHADE = "toggle_notification_shade";
+        public static final String TOGGLE_NOTIFICATION_AND_QS_SHADE = "toggle_notification_and_qs_shade";
 
          /**
          * Whether Expanded desktop is currently running or not
@@ -4000,6 +4000,13 @@ public final class Settings {
          * @hide
          */
         public static final String POWER_UI_LOW_BATTERY_WARNING_POLICY = "power_ui_low_battery_warning_policy";
+
+        /**
+         * Volume key controls ringtone or media sound stream
+         *
+         * @hide
+         */
+        public static final String VOLUME_KEYS_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
