@@ -96,9 +96,9 @@ public class AirplaneModeTile extends QuickSettingsTile implements NetworkSignal
     @Override
     public void onAirplaneModeChanged(boolean enabled) {
         this.enabled = enabled;
-        if(enabled){
+        if (enabled) {
             mDrawable = R.drawable.ic_qs_airplane_on;
-        }else{
+        } else {
             mDrawable = R.drawable.ic_qs_airplane_off;
         }
         updateQuickSettings();

@@ -85,9 +85,9 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
         batteryIcon = charging
                 ? chargingBatteryLevels :
                     batteryLevels;
-        if(batteryLevel == 100) {
+        if (batteryLevel == 100) {
             mLabel = mContext.getString(R.string.quick_settings_battery_charged_label);
-        }else{
+        } else {
             mLabel = charging
                     ? mContext.getString(R.string.quick_settings_battery_charging_label,
                             batteryLevel)

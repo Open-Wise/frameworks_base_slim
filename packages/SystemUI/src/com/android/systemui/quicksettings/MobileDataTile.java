@@ -57,9 +57,9 @@ public class MobileDataTile extends QuickSettingsTile {
                 ConnectivityManager conMan = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
                 boolean mDataEnabled = Settings.Global.getInt(
                      mContext.getContentResolver(), Settings.Global.MOBILE_DATA, 0) == 1;
-                if(mDataEnabled){
+                if (mDataEnabled) {
                     conMan.setMobileDataEnabled(false);
-                }else{
+                } else {
                     conMan.setMobileDataEnabled(true);
                 }
             }
@@ -87,7 +87,7 @@ public class MobileDataTile extends QuickSettingsTile {
     private void updateTileState() {
         boolean enabled = Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.MOBILE_DATA, 0) == 1;
-        if(enabled) {
+        if (enabled) {
             mLabel = mContext.getString(R.string.quick_settings_mobile_data_on);
             mDrawable = R.drawable.ic_qs_mobildata_on;
         } else {

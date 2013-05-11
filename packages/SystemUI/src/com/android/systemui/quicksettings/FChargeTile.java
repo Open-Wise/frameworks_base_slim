@@ -112,7 +112,7 @@ public class FChargeTile extends QuickSettingsTile {
             }
         } catch (IOException e) {
             if (DBG) Log.e("FChargeToggle", "Couldn't read fast_charge file");
-            Settings.System.putInt(mContext.getContentResolver(),
+                 Settings.System.putInt(mContext.getContentResolver(),
                  Settings.System.FCHARGE_ENABLED, 0);
         }
         return false;
@@ -122,7 +122,7 @@ public class FChargeTile extends QuickSettingsTile {
         enabled = isFastChargeOn();
         String label = mContext.getString(R.string.quick_settings_fcharge);
 
-        if(enabled) {
+        if (enabled) {
             mDrawable = R.drawable.ic_qs_fcharge_on;
             mLabel = label;
         } else {
