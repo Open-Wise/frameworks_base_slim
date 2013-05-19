@@ -78,7 +78,8 @@
          and the second integer of the pair indicates the amount to increase the master volume
          when volume up is pressed. -->
     <integer-array name="config_masterVolumeRamp">
-        <item>0</item>  <item>5</item>  <!-- default: always increase volume by 5% -->
+        <item>0</item>
+        <item>5</item>  <!-- default: always increase volume by 5% -->
     </integer-array>
 
     <!-- The attenuation in dB applied to the sound effects played
@@ -940,9 +941,9 @@
     <!-- Is the dreams feature supported? -->
     <bool name="config_dreamsSupported">true</bool>
     <!-- If supported, are dreams enabled? (by default) -->
-    <bool name="config_dreamsEnabledByDefault">true</bool>
+    <bool name="config_dreamsEnabledByDefault">false</bool>
     <!-- If supported and enabled, are dreams activated when docked? (by default) -->
-    <bool name="config_dreamsActivatedOnDockByDefault">true</bool>
+    <bool name="config_dreamsActivatedOnDockByDefault">false</bool>
     <!-- If supported and enabled, are dreams activated when asleep and charging? (by default) -->
     <bool name="config_dreamsActivatedOnSleepByDefault">false</bool>
     <!-- ComponentName of the default dream (Settings.Secure.SCREENSAVER_COMPONENT) -->
