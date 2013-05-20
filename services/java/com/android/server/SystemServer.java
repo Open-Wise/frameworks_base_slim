@@ -91,7 +91,7 @@ class ServerThread extends Thread {
 
     void reportWtf(String msg, Throwable e) {
         Slog.w(TAG, "***********************************************");
-        Log.e(TAG, "BOOT FAILURE " + msg, e);
+        Log.wtf(TAG, "BOOT FAILURE " + msg, e);
     }
 
     private class AdbPortObserver extends ContentObserver {
