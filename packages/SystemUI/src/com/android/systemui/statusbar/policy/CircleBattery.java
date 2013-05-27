@@ -90,8 +90,6 @@ public class CircleBattery extends ImageView {
     private int mCircleTextChargingColor;
     private int mCircleAnimSpeed;
 
-    private SettingsObserver mSettingsObserver;
-
     // runnable to invalidate view via mHandler.postDelayed() call
     private final Runnable mInvalidate = new Runnable() {
         public void run() {
@@ -214,6 +212,7 @@ public class CircleBattery extends ImageView {
         mHandler = new Handler();
         mObserver = new SettingsObserver(mHandler);
         mBatteryReceiver = new BatteryReceiver(mContext);
+        mObserver = new SettingsObserver(mHandler);
         updateSettings();
     }
 
@@ -224,8 +223,7 @@ public class CircleBattery extends ImageView {
             mAttached = true;
             mObserver.observe();
             mBatteryReceiver.updateRegistration();
-            mSettingsObserver = new SettingsObserver(mHandler);
-            mSettingsObserver.observe();
+            mObserver.observe();
             updateSettings();
             mHandler.postDelayed(mInvalidate, 250);
         }
@@ -238,7 +236,6 @@ public class CircleBattery extends ImageView {
             mAttached = false;
             mObserver.unobserve();
             mBatteryReceiver.updateRegistration();
-            mContext.getContentResolver().unregisterContentObserver(mSettingsObserver);
             mRectLeft = null;   // makes sure, size based variables get
                                 // recalculated on next attach
             mCircleSize = 0;    // makes sure, mCircleSize is reread from icons on
