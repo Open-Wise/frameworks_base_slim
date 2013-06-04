@@ -17,13 +17,13 @@ LOCAL_SRC_FILES:= \
     storage_manager.cpp
 
 LOCAL_SHARED_LIBRARIES := \
-    libcutils \
+    libandroid_runtime \
     libandroidfw \
-    libutils \
     libbinder \
-    libui \
+    libcutils \
     libgui \
-    libandroid_runtime
+    libui \
+    libutils
 
 LOCAL_STATIC_LIBRARIES := \
     libstorage
