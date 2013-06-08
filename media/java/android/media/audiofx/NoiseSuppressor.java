@@ -65,7 +65,7 @@ public class NoiseSuppressor extends AudioEffect {
         try {
             ns = new NoiseSuppressor(audioSession);
         } catch (IllegalArgumentException e) {
-            Log.w(TAG, "not implemented on this device "+ns);
+            Log.w(TAG, "not implemented on this device " + ns);
         } catch (UnsupportedOperationException e) {
             Log.w(TAG, "not enough resources");
         } catch (RuntimeException e) {

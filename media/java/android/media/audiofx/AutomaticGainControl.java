@@ -63,7 +63,7 @@ public class AutomaticGainControl extends AudioEffect {
         try {
             agc = new AutomaticGainControl(audioSession);
         } catch (IllegalArgumentException e) {
-            Log.w(TAG, "not implemented on this device "+agc);
+            Log.w(TAG, "not implemented on this device " + agc);
         } catch (UnsupportedOperationException e) {
             Log.w(TAG, "not enough resources");
         } catch (RuntimeException e) {

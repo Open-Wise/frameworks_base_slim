@@ -16,18 +16,10 @@
 
 package android.media.audiofx;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.media.audiofx.AudioEffect;
-import android.os.Bundle;
 import android.util.Log;
 
-import java.nio.ByteOrder;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.util.StringTokenizer;
-
 
 /**
  * An audio virtualizer is a general name for an effect to spatialize audio channels. The exact

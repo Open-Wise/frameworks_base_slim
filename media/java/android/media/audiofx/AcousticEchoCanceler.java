@@ -63,7 +63,7 @@ public class AcousticEchoCanceler extends AudioEffect {
         try {
             aec = new AcousticEchoCanceler(audioSession);
         } catch (IllegalArgumentException e) {
-            Log.w(TAG, "not implemented on this device"+ aec);
+            Log.w(TAG, "not implemented on this device" + aec);
         } catch (UnsupportedOperationException e) {
             Log.w(TAG, "not enough resources");
         } catch (RuntimeException e) {
