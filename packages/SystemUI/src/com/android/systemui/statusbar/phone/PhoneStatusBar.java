@@ -3064,14 +3064,6 @@ public class PhoneStatusBar extends BaseStatusBar {
         }
     };
 
-    private final View.OnClickListener mClockClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivityDismissingKeyguard(
-                    new Intent(Intent.ACTION_QUICK_CLOCK), true); // have fun, everyone
-        }
-    };
-
     private final View.OnClickListener mNotificationButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
