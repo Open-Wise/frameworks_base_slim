@@ -3418,6 +3418,13 @@ public final class Settings {
         /**
          * down Swipe Action
          *
+         * HALO being minimal.
+         * @hide
+         */
+        public static final String HALO_STYLE = "halo_style";
+
+        /**
+         *
          * @hide
          */
         public static final String GESTURES_DOWN_SWIPE = "gestures_down_swipe";
