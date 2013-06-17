@@ -3156,6 +3156,12 @@ public final class Settings {
         public static final String STATUSBAR_CLOCK_STYLE = "statusbar_clock_style";
 
         /**
+         * Display second in the Clock
+         * @hide
+         */
+        public static final CLOCK_USE_SECOND = "clock_use_second";
+
+        /**
          * Setting for clock color
          * @hide
          */
