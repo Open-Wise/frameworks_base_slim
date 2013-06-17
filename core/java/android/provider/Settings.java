@@ -2673,6 +2673,12 @@ public final class Settings {
          */
         public static final String PIE_TRIGGER_SHOW = "pie_trigger_show";
 
+       /**
+         * HALO enabled, should default to 0 (HALO is disabled)
+         * @hide
+         */
+        public static final String HALO_ENABLED = "halo_enabled";
+
         /**
          * Pie IME softkeyboard state toggle (0 or 1)
          * @hide
