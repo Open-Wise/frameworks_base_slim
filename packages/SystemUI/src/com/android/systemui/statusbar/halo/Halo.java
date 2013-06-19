@@ -129,7 +129,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
     private boolean mHideTicker;
     private INotificationManager mNotificationManager;
 
-    private int id;
+	private int id;
     private String appName;
 
     private Context mContext;
@@ -158,7 +158,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
     private Paint mPaintWhite = new Paint();
     private Paint mPaintHoloRed = new Paint();
 
-    public boolean mExpanded = false;
+	public boolean mExpanded = false;
     public boolean mSnapped = true;
 
     public boolean mFirstStart = true;
