@@ -72,6 +72,7 @@ import com.android.internal.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.NullPointerException;
 
 import android.view.animation.Animation;  
 import android.view.animation.AlphaAnimation;  
@@ -2223,9 +2224,9 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
         int scrollY = 0;
 
         try {
-            scrollY = getChildAt(0).getTop();
-        } catch (NullPointerException e){
-            scrollY = mvPosition;
+        	scrollY = getChildAt(0).getTop();
+        } catch (NullPointerException e) {
+        	scrollY = mvPosition;
         }
 
         boolean mDown = false;
