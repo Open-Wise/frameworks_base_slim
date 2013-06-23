@@ -2235,10 +2235,11 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
             return view;
         } 
         }
-        mvPosition = scrollY;
 
         if(mvPosition < scrollY)
         mDown = true;
+        mvPosition = scrollY;
+
 
         Animation anim = null;
         switch (mAnim) {
