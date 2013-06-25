@@ -2734,6 +2734,12 @@ public final class Settings {
          * @hide
          */
         public static final String HALO_CIRCLE_COLOR = "halo_circle_color";
+
+        /**
+         * HALO colors
+         * @hide
+         */
+        public static final String HALO_COLORS = "halo_colors";
   
         /**
          * HALO, should default to 0 (no, do not show)
