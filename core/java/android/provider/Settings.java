@@ -2728,6 +2728,12 @@ public final class Settings {
          * @hide
          */
         public static final String HALO_BUBBLE_TEXT_COLOR = "halo_bubble_text_color";
+
+        /**
+         * HALO circle bg color.
+         * @hide
+         */
+        public static final String HALO_CIRCLE_COLOR = "halo_circle_color";
   
         /**
          * HALO, should default to 0 (no, do not show)
@@ -3429,13 +3435,6 @@ public final class Settings {
 
         /**
          * down Swipe Action
-         *
-         * HALO being minimal.
-         * @hide
-         */
-        public static final String HALO_STYLE = "halo_style";
-
-        /**
          *
          * @hide
          */
