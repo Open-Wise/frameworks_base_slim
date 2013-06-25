@@ -2681,12 +2681,6 @@ public final class Settings {
          */
         public static final String PIE_TRIGGER_SHOW = "pie_trigger_show";
 
-       /**
-         * HALO enabled, should default to 0 (HALO is disabled)
-         * @hide
-         */
-        public static final String HALO_ENABLED = "halo_enabled";
-
         /**
          * Pie IME softkeyboard state toggle (0 or 1)
          * @hide
@@ -2716,6 +2710,24 @@ public final class Settings {
          * @hide
          */
         public static final String PIE_BUTTON_LONG_PRESSED_COLOR = "pie_button_long_pressed_color";
+
+       /**
+         * HALO enabled, should default to 0 (HALO is disabled)
+         * @hide
+         */
+        public static final String HALO_ENABLED = "halo_enabled";
+
+        /**
+         * HALO speech bubble color
+         * @hide
+         */
+        public static final String HALO_BUBBLE_COLOR = "halo_bubble_color";
+
+        /**
+         * HALO speech bubble text color
+         * @hide
+         */
+        public static final String HALO_BUBBLE_TEXT_COLOR = "halo_bubble_text_color";
   
         /**
          * HALO, should default to 0 (no, do not show)
