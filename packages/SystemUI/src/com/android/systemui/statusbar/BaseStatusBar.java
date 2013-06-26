@@ -166,7 +166,8 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected boolean mHaloActive;
     protected boolean mHaloTaskerActive = false;
     protected ImageView mHaloButton;
-    protected boolean mHaloButtonVisible = true;
+    protected boolean mHaloButtonVisible;
+    protected boolean mHaloBtn;
 
     /**
      * An interface for navigation key bars to allow status bars to signal which keys are
@@ -504,13 +505,16 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     protected void updateHaloButton() {
         if (mHaloButton != null) {
-            mHaloButton.setVisibility(mHaloButtonVisible && !mHaloActive ? View.VISIBLE : View.GONE);
+            mHaloButton.setVisibility(!mHaloBtn && mHaloButtonVisible && !mHaloActive ? View.VISIBLE : View.GONE);
         }
     }
 
     protected void updateHalo() {
         mHaloActive = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.HALO_ACTIVE, 0) == 1;
+
+        mHaloBtn = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.HALO_BUTTON_SHOW, 1) == 1;
 
         updateHaloButton();
 
