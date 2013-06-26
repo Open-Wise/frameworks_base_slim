@@ -3159,7 +3159,7 @@ public final class Settings {
          * Display second in the Clock
          * @hide
          */
-        public static final CLOCK_USE_SECOND = "clock_use_second";
+        public static final String CLOCK_USE_SECOND = "clock_use_second";
 
         /**
          * Setting for clock color

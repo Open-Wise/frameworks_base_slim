@@ -163,20 +163,23 @@ public class Clock extends TextView {
         }
         mSettingsObserver.observe();
 
-        second = new TimerTask() {
-        @Override
-        public void run() {
-            Runnable updater = new Runnable() {
-        public void run()
-            updateSettings();
-        }
-    };
-            handler.post(updater);
-        }
-    };
-        Timer time = new Timer();
-        timer.schedule(second, 0, 1000);
-
+        second = new TimerTask()
+        {
+            @Override
+            public void run()
+             {
+                Runnable updater = new Runnable()
+                  {        
+                   public void run()
+                   {     
+                       updateClock();
+                   }
+                  };
+                handler.post(updater);
+             }
+        };
+        Timer timer = new Timer();
+        timer.schedule(second, 0, 1000); 
     }
 
     @Override
