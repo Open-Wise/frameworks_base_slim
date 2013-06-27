@@ -37,7 +37,6 @@ import com.android.systemui.statusbar.policy.PieController.Position;
 import com.android.systemui.statusbar.tablet.StatusBarPanel;
 import com.android.systemui.statusbar.WidgetView;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.ActivityOptions;
@@ -1829,8 +1828,6 @@ public abstract class BaseStatusBar extends SystemUI implements
                 refreshPieTriggers();
             }
         }
-
-        Activity.mPieOnTop = isPieEnabled() && ((Position.TOP.FLAG & mPieTriggerSlots & mPieTriggerMask) != 0);
     }
 
     // This should only be called, when is is clear that the pie controls are active
