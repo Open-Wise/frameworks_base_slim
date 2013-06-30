@@ -26,6 +26,7 @@ import android.graphics.drawable.TransitionDrawable;
 import android.provider.Settings;
 import android.os.Bundle;
 import android.os.Debug;
+import android.os.Message;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -697,6 +698,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     boolean mIsScrolling;
     int mWidth, mHeight = 0;
     int mvPosition;
+    boolean mIsTap = false;
     boolean mIsGridView = false;
     /**
      * Interface definition for a callback to be invoked when the list or grid
@@ -2220,6 +2222,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     View setAnimation(View view) {
         int mAnim = Settings.System.getInt(mContext.getContentResolver(),Settings.System.LISTVIEW_ANIMATION, 0);
         int scrollY = 0;
+        boolean mDown = false;
 
         try {
             scrollY = computeVerticalScrollOffset();
@@ -2227,15 +2230,10 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
             scrollY = mvPosition;
         }
 
-        boolean mDown = false;
-        if (mAnim == 0) {
-            return view;
-        }
-
-        if (!mIsGridView) {
-            if(mvPosition == scrollY) {
-               return view;
-            } 
+        if (view != null) {
+            if (mAnim == 0) {
+                return view;
+            }
         }
 
         if (mvPosition < scrollY) {
@@ -2307,13 +2305,15 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
             case 7:
                 anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.bounce_interpolator));
                 break;
-        }      
-        view.startAnimation(anim);
+        }
+        if (view != null) {
+            view.startAnimation(anim);
+        }
         return view;
     }
  
     public void setGridView(boolean bool){
-    mIsGridView = bool;
+        mIsGridView = bool;
     }
 
     class ListItemAccessibilityDelegate extends AccessibilityDelegate {
@@ -3356,6 +3356,12 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
         }
     }
 
+    final Handler Inverse = new Handler() {
+        public void handleMessage(Message msg) {
+            mIsTap = !mIsTap;
+        }
+    };
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         if (!isEnabled()) {
@@ -3392,6 +3398,8 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
 
         switch (action & MotionEvent.ACTION_MASK) {
         case MotionEvent.ACTION_DOWN: {
+        mIsTap = true;
+        Inverse.sendEmptyMessageDelayed(0,100);
             switch (mTouchMode) {
             case TOUCH_MODE_OVERFLING: {
                 mFlingRunnable.endFling();
@@ -3488,6 +3496,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
         }
 
         case MotionEvent.ACTION_UP: {
+            mIsTap = false;
             switch (mTouchMode) {
             case TOUCH_MODE_DOWN:
             case TOUCH_MODE_TAP:
