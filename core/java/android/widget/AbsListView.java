@@ -808,7 +808,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
         int color = a.getColor(R.styleable.AbsListView_cacheColorHint, 0);
         setCacheColorHint(color);
 
-        boolean enableFastScroll = a.getBoolean(R.styleable.AbsListView_fastScrollEnabled, false);
+        boolean enableFastScroll = a.getBoolean(R.styleable.AbsListView_fastScrollEnabled, true);
         setFastScrollEnabled(enableFastScroll);
 
         boolean smoothScrollbar = a.getBoolean(R.styleable.AbsListView_smoothScrollbar, true);
@@ -2218,7 +2218,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     }
 
     View setAnimation(View view) {
-        int mAnim = Settings.System.getInt(mContext.getContentResolver(),Settings.System.LISTVIEW_ANIMATION, 1);
+        int mAnim = Settings.System.getInt(mContext.getContentResolver(),Settings.System.LISTVIEW_ANIMATION, 0);
         int scrollY = 0;
 
         try {
@@ -2228,20 +2228,23 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
         }
 
         boolean mDown = false;
-        if(mAnim == 0)
+        if (mAnim == 0) {
             return view;
-        if(!mIsGridView) {
-        if(mvPosition == scrollY) {
-            return view;
-        } 
         }
 
-        if(mvPosition < scrollY)
-        mDown = true;
-        mvPosition = scrollY;
+        if (!mIsGridView) {
+            if(mvPosition == scrollY) {
+               return view;
+            } 
+        }
 
+        if (mvPosition < scrollY) {
+            mDown = true;
+            mvPosition = scrollY;
+        }
 
         Animation anim = null;
+
         switch (mAnim) {
             case 1:	
                 anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f);
@@ -3543,7 +3546,6 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
                                     if (!mDataChanged) {
                                         performClick.run();
                                     }
-                                    mTouchModeReset = null;
                                 }
                             };
                             postDelayed(mTouchModeReset,
@@ -5343,6 +5345,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
 
     @Override
     protected void handleDataChanged() {
+        mIsScrolling = false;
         int count = mItemCount;
         int lastHandledItemCount = mLastHandledItemCount;
         mLastHandledItemCount = mItemCount;
