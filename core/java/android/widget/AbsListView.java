@@ -808,7 +808,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
         int color = a.getColor(R.styleable.AbsListView_cacheColorHint, 0);
         setCacheColorHint(color);
 
-        boolean enableFastScroll = a.getBoolean(R.styleable.AbsListView_fastScrollEnabled, true);
+        boolean enableFastScroll = a.getBoolean(R.styleable.AbsListView_fastScrollEnabled, false);
         setFastScrollEnabled(enableFastScroll);
 
         boolean smoothScrollbar = a.getBoolean(R.styleable.AbsListView_smoothScrollbar, true);
