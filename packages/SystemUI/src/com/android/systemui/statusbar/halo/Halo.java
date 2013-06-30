@@ -211,7 +211,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         mPm = mContext.getPackageManager();
         mWindowManager = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);
         mInflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
+        mVibrator = (Vibrator)mContext.getSystemService(Context.VIBRATOR_SERVICE);
         mNotificationManager = INotificationManager.Stub.asInterface(
                 ServiceManager.getService(Context.NOTIFICATION_SERVICE));
         mDisplay = mWindowManager.getDefaultDisplay();
@@ -224,7 +224,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         mSettingsObserver.onChange(true);
 
         // Init variables
-        BitmapDrawable bd = (BitmapDrawable) mContext.getResources().getDrawable(R.drawable.halo_bg);
+        BitmapDrawable bd = (BitmapDrawable)mContext.getResources().getDrawable(R.drawable.halo_bg);
         mIconSize = bd.getBitmap().getWidth();
         mIconHalfSize = mIconSize / 2;
 
