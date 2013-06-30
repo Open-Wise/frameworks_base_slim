@@ -346,9 +346,6 @@ public class PhoneStatusBar extends BaseStatusBar {
     private boolean mIsAutoBrightNess;
     private Float mPropFactor;
 
-    ///
-    private boolean mHaloBtn;
-
     private int mNavigationIconHints = 0;
     private final Animator.AnimatorListener mMakeIconsInvisible = new AnimatorListenerAdapter() {
         @Override
@@ -418,8 +415,6 @@ public class PhoneStatusBar extends BaseStatusBar {
                     Settings.System.NOTIFICATION_SHORTCUTS_HIDE_CARRIER, 0, UserHandle.USER_CURRENT) != 0;
             boolean notificationSettingsBtn = Settings.System.getInt(
                     resolver, Settings.System.NOTIFICATION_SETTINGS_BUTTON, 0) == 1;
-            mHaloBtn = Settings.System.getInt(
-                    resolver, Settings.System.HALO_BUTTON_SHOW, 1) == 1;
             if (mHasSettingsPanel) {
                 mSettingsButton.setVisibility(notificationSettingsBtn ? View.VISIBLE : View.GONE);
             } else {
@@ -427,13 +422,6 @@ public class PhoneStatusBar extends BaseStatusBar {
             }
             if (mCarrierLabel != null) {
                 toggleCarrierAndWifiLabelVisibility();
-            }
-            if (!mHaloBtn) {
-                mHaloButtonVisible = true;
-                updateHaloButton();
-            } else if (mHaloBtn) {
-                mHaloButtonVisible = false;
-                updateHaloButton();
             }
             updateStatusBarVisibility();
             showClock(true);
@@ -678,21 +666,11 @@ public class PhoneStatusBar extends BaseStatusBar {
 
         }
 
-        mHaloBtn = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_BUTTON_SHOW, 1) == 1;
-
-        if (mHaloBtn) {
-            mHaloButton = (ImageView) mStatusBarWindow.findViewById(R.id.halo_button);
-            if (mHaloButton != null) {
-                mHaloButton.setOnClickListener(mHaloButtonListener);
-                mHaloButtonVisible = true;
-                updateHaloButton();
-            }
-        } else {
-            if (mHaloButton == null) {
-                mHaloButtonVisible = false;
-                updateHaloButton();
-            }
+        mHaloButton = (ImageView) mStatusBarWindow.findViewById(R.id.halo_button);
+        if (mHaloButton != null) {
+            mHaloButton.setOnClickListener(mHaloButtonListener);
+            mHaloButtonVisible = true;
+            updateHaloButton();
         }
 
         if (mHasFlipSettings) {

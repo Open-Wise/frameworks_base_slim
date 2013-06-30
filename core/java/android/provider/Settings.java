@@ -2729,13 +2729,6 @@ public final class Settings {
         public static final String HALO_PAUSE = "halo_pause";
 
         /**
-         * Whether to show Halo button when status bar expanded
-         * 0 - Hide, 1 - Show (default)
-         * @hide
-         */
-        public static final String HALO_BUTTON_SHOW = "halo_button_show";
-
-        /**
          * Pie button outline color
          * @hide
          */
