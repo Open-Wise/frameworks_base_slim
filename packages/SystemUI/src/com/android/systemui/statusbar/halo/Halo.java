@@ -574,7 +574,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                         mEffect.setHaloY((int)(mKillY - mIconHalfSize));
                             
                         if (!mOverX) {
-                            if (mHapticFeedback) mVibrator.vibrate(25);
+                            if (mHapticFeedback) mVibrator.vibrate(35);
                             mEffect.ping(mPaintHoloRed, 0);
                             mEffect.setHaloOverlay(HaloProperties.Overlay.BLACK_X, 1f);
                             mOverX = true;
@@ -670,7 +670,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                     if (gestureChanged) {
                         mMarkerIndex = -1;
                         mEffect.killTicker();
-                        if (mHapticFeedback) mVibrator.vibrate(10);
+                        if (mHapticFeedback) mVibrator.vibrate(15);
                     }
 
                 } else {
@@ -684,7 +684,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                     oldIconIndex = mMarkerIndex;
 
                     // Make a tiny pop if not so many icons are present
-                    if (mHapticFeedback && mNotificationData.size() < 10) mVibrator.vibrate(1);
+                    if (mHapticFeedback && mNotificationData.size() < 10) mVibrator.vibrate(3);
 
                     try {
                         if (mMarkerIndex == -1) {
@@ -852,7 +852,6 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
 
                     mPingX = mHaloX + mIconHalfSize;
                     mPingY = mHaloY + mIconHalfSize;
-;
                     mPingPaint = paint;
 
                     int c = Color.argb(0xff, Color.red(paint.getColor()), Color.green(paint.getColor()), Color.blue(paint.getColor()));
@@ -998,7 +997,6 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                 canvas.drawBitmap(mMarkerB, xPos, yButtom, mMarkerPaint);
             }
 
-
             // Bubble
             state = canvas.save();
             canvas.translate(mHaloX, mHaloY);
@@ -1101,7 +1099,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                     mLastNotificationEntry = entry;
 
                     if (allowed) {
-                        tick(entry, text, HaloEffect.WAKE_TIME, 1000);
+                        tick(entry, text, HaloEffect.WAKE_TIME, 900);
 
                         // Pop while not tasking, only if notification is certified fresh
                         if (mEnableColor) {
