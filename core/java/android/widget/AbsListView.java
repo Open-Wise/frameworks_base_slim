@@ -75,11 +75,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.lang.NullPointerException;
 
-import android.view.animation.Animation;  
-import android.view.animation.AlphaAnimation;  
-import android.view.animation.ScaleAnimation;  
-import android.view.animation.TranslateAnimation;  
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 
 /**
  * Base class that can be used to implement virtualized lists of items. A list does
@@ -695,6 +696,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     /**
      * for ListView Animations
      */
+    boolean mIsWidget;
     boolean mIsScrolling;
     int mWidth, mHeight = 0;
     int mvPosition;
@@ -2164,7 +2166,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
         if (scrapView != null) {
             child = mAdapter.getView(position, scrapView, this);
 
-            if(mIsScrolling) {
+            if(mIsScrolling && !mIsWidget) {
                 child = setAnimation(child);
             }
 
@@ -2251,7 +2253,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
                 anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF,1.0f, Animation.RELATIVE_TO_SELF, 1.0f);
                 break;
             case 3:
-                anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF,0.5f, Animation.RELATIVE_TO_SELF, 0.5f);	
+                anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF,0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 break;
             case 4:
                 anim = new AlphaAnimation(0.0f, 1.0f);
@@ -2275,10 +2277,13 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
                     anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
                 break;
             case 9:
-                anim = new TranslateAnimation(-mWidth, 0.0f, 0.0f, 0.0f);	
+                anim = new TranslateAnimation(-mWidth, 0.0f, 0.0f, 0.0f);
                 break;
             case 10:
-                anim = new TranslateAnimation(mWidth, 0.0f, 0.0f, 0.0f);	
+                anim = new TranslateAnimation(mWidth, 0.0f, 0.0f, 0.0f);
+                break;
+            case 11:
+                anim = new RotateAnimation(180, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 break;
         }
         anim.setDuration(500);
@@ -3171,6 +3176,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
                     mScrollProfilingStarted = true;
                 }
             }
+            mIsWidget = false;
 
             if (mScrollStrictSpan == null) {
                 // If it's non-null, we're already in a scroll.
@@ -5358,7 +5364,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
 
     @Override
     protected void handleDataChanged() {
-        mIsScrolling = false;
+        mIsWidget = true;
         int count = mItemCount;
         int lastHandledItemCount = mLastHandledItemCount;
         mLastHandledItemCount = mItemCount;
