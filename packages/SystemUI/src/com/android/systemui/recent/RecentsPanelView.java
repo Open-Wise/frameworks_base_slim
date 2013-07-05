@@ -726,25 +726,18 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                         holder.thumbnailViewImage, bm, 0, 0, null).toBundle();
 
         show(false);
-        Intent intent = ad.intent;
-        boolean floating = (intent.getFlags() & Intent.FLAG_FLOATING_WINDOW) == Intent.FLAG_FLOATING_WINDOW;
-        if (ad.taskId >= 0 && !floating) {
+        if (ad.taskId >= 0) {
             // This is an active task; it should just go to the foreground.
             am.moveTaskToFront(ad.taskId, ActivityManager.MOVE_TASK_WITH_HOME,
                     opts);
         } else {
-            boolean backPressed = mRecentsActivity != null && mRecentsActivity.mBackPressed;
-            if (!floating || !backPressed) {
-                intent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY
-                        | Intent.FLAG_ACTIVITY_TASK_ON_HOME
-                        | Intent.FLAG_ACTIVITY_NEW_TASK);
-            }
+            Intent intent = ad.intent;
+            intent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY
+                    | Intent.FLAG_ACTIVITY_TASK_ON_HOME
+                    | Intent.FLAG_ACTIVITY_NEW_TASK);
             if (DEBUG) Log.v(TAG, "Starting activity " + intent);
             context.startActivityAsUser(intent, opts,
                     new UserHandle(UserHandle.USER_CURRENT));
-            if (floating && mRecentsActivity != null) {
-                mRecentsActivity.finish();
-            }
         }
         if (usingDrawingCache) {
             holder.thumbnailViewImage.setDrawingCacheEnabled(false);
@@ -829,11 +822,10 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                     ViewHolder viewHolder = (ViewHolder) selectedView.getTag();
                     if (viewHolder != null) {
                         final TaskDescription ad = viewHolder.taskDescription;
-                        dismissAndGoBack();
                         Intent intent = ad.intent;
                         intent.addFlags(Intent.FLAG_FLOATING_WINDOW
                                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        intent.setFlags(intent.getFlags() & ~Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY);
+                        dismissAndGoBack();
                         getContext().startActivity(intent);
                     }
                 } else {
