@@ -1688,7 +1688,7 @@ public class NotificationManagerService extends INotificationManager.Stub
     }
 
     public void cancelNotificationWithTag(String pkg, String tag, int id, int userId) {
-        checkCallerIsSystemOrSameApp(pkg);
+        checkCallerCanCancelNotification(pkg);
         userId = ActivityManager.handleIncomingUser(Binder.getCallingPid(),
                 Binder.getCallingUid(), userId, true, false, "cancelNotificationWithTag", pkg);
         // Don't allow client applications to cancel foreground service notis.
@@ -1698,7 +1698,7 @@ public class NotificationManagerService extends INotificationManager.Stub
     }
 
     public void cancelAllNotifications(String pkg, int userId) {
-        checkCallerIsSystemOrSameApp(pkg);
+        checkCallerCanCancelNotification(pkg);
 
         userId = ActivityManager.handleIncomingUser(Binder.getCallingPid(),
                 Binder.getCallingUid(), userId, true, false, "cancelAllNotifications", pkg);
@@ -1714,6 +1714,14 @@ public class NotificationManagerService extends INotificationManager.Stub
             return;
         }
         throw new SecurityException("Disallowed call for uid " + uid);
+    }
+
+    void checkCallerCanCancelNotification(String pkg) {
+        if (mContext.checkCallingOrSelfPermission(android.Manifest.permission.CANCEL_NOTIFICATIONS)
+                == PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        checkCallerIsSystemOrSameApp(pkg);
     }
 
     void checkCallerIsSystemOrSameApp(String pkg) {
