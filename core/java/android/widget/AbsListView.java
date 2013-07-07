@@ -2265,16 +2265,18 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
                 anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
                 break;
             case 7:
-                if(mDown)
+                if (mDown) {
                     anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
-                else
+                } else {
                     anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
+                }
                 break;
             case 8:
-                if(mDown)
+                if (mDown) {
                     anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
-                else
+                } else {
                     anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
+                }
                 break;
             case 9:
                 anim = new TranslateAnimation(-mWidth, 0.0f, 0.0f, 0.0f);
@@ -2596,7 +2598,7 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
 
         Drawable selector = mSelector;
         Rect selectorRect = mSelectorRect;
-        if (selector != null && (isFocused() || touchModeDrawsInPressedState())
+        if (mSelector != null && (isFocused() || touchModeDrawsInPressedState())
                 && !selectorRect.isEmpty()) {
 
             final View v = getChildAt(mSelectedPosition - mFirstPosition);
@@ -2678,7 +2680,6 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
             System.arraycopy(state, enabledPos + 1, state, enabledPos,
                     state.length - enabledPos - 1);
         }
-
         return state;
     }
 
@@ -2690,7 +2691,9 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
     @Override
     public void jumpDrawablesToCurrentState() {
         super.jumpDrawablesToCurrentState();
-        if (mSelector != null) mSelector.jumpToCurrentState();
+        if (mSelector != null) {
+            mSelector.jumpToCurrentState();
+        }
     }
 
     @Override
@@ -2821,7 +2824,6 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
                 }
             }
         }
-
         mLastTouchMode = touchMode;
     }
 
@@ -2990,7 +2992,6 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
                         longPressPosition, longPressId);
                 handled = super.showContextMenuForChild(originalView);
             }
-
             return handled;
         }
         return false;
@@ -4019,13 +4020,14 @@ public abstract class AbsListView extends AdapterView<ListAdapter> implements Te
      */
     void reportScrollStateChange(int newState) {
         if (newState != mLastScrollState) {
-            if(newState == OnScrollListener.SCROLL_STATE_IDLE) 
-            mIsScrolling = false;
-            else
-            mIsScrolling = true;              
-            if (mOnScrollListener != null) {
-                mLastScrollState = newState;
-                mOnScrollListener.onScrollStateChanged(this, newState);
+            if(newState == OnScrollListener.SCROLL_STATE_IDLE) {
+               mIsScrolling = false;
+            } else {
+               mIsScrolling = true;              
+                   if (mOnScrollListener != null) {
+                       mLastScrollState = newState;
+                       mOnScrollListener.onScrollStateChanged(this, newState);
+                   }
             }
         }
     }

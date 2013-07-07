@@ -151,11 +151,10 @@ public class StateListDrawable extends DrawableContainer {
 
             int drawableRes = 0;
 
-            int i;
             int j = 0;
             final int numAttrs = attrs.getAttributeCount();
             int[] states = new int[numAttrs];
-            for (i = 0; i < numAttrs; i++) {
+            for (int i = 0; i < numAttrs; i++) {
                 final int stateResId = attrs.getAttributeNameResource(i);
                 if (stateResId == 0) break;
                 if (stateResId == com.android.internal.R.attr.drawable) {
