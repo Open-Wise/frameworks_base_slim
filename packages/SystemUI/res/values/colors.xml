@@ -42,6 +42,10 @@
     <drawable name="notification_item_background_color">#ff111111</drawable>
     <drawable name="notification_item_background_color_pressed">#ff257390</drawable>
 
+   <!-- Halo colors -->
+   <color name="halo_ping_color">#ff33b5e5</color>
+   <color name="halo_text_color">#ffffffff</color>
+
     <!-- ==================== pie controls ==================== -->
     <!-- this color is used to darkening the whole screen when pie controls are active -->
     <color name="pie_overlay_color">#ff000000</color>
