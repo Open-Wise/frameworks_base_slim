@@ -701,5 +701,7 @@
     <string name="pie_phone_status_emergency_only">Emergency calls only</string>
 
     <string name="halo_dismiss">Dismiss notification</string>
-    <string name="halo_hide">Hide HALO</string>s
+    <string name="halo_hide">Hide HALO</string>
+    <string name="halo_clear_all">Clear all notifications</string>
+    <string name="halo_silence">Silence HALO until woken</string>
 </resources>
