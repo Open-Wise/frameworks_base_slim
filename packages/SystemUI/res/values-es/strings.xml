@@ -313,4 +313,8 @@
         <item quantity="one">1 aplicación reciente</item>
         <item quantity="other">%d aplicaciones recientes</item>
     </plurals>
+    <string name="halo_dismiss">Descartar notificación</string>
+    <string name="halo_hide">Ocultar</string>
+    <string name="halo_clear_all">Limpiar todas las notificaciones</string>
+    <string name="halo_silence">Ocultar y silenciar hasta despertar</string>
 </resources>
