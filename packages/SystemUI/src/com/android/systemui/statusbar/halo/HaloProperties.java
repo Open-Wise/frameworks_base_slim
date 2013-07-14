@@ -68,6 +68,7 @@ public class HaloProperties extends FrameLayout {
     protected TextView mHaloNumber;
 
     private boolean mEnableColor;
+    private Handler mHandler;
 
     CustomObjectAnimator mHaloOverlayAnimator;
 

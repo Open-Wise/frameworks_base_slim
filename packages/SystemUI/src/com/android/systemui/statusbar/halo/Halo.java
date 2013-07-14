@@ -134,6 +134,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
     private INotificationManager mNotificationManager;
     private SettingsObserver mSettingsObserver;
     private GestureDetector mGestureDetector;
+    private KeyguardManager mKeyguardManager;
 
     private HaloEffect mEffect;
     private WindowManager.LayoutParams mTriggerPos;
