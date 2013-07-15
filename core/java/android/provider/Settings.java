@@ -3105,6 +3105,12 @@ public final class Settings {
         public static final String STATUS_BAR_CLOCK = "status_bar_clock";
 
         /**
+         * Whether to show the traffic status
+         * @hide
+         */
+        public static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
+
+        /**
          * Whether to show the battery bar
          * @hide
          */
