@@ -108,44 +108,45 @@ public class Traffic extends TextView {
         }
     };
 
-	public void updateTraffic() {
-		mTrafficHandler = new Handler(){
-			@Override
-			public void handleMessage(Message msg) {
-					speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / 1024 /3;
-					totalRxBytes = mTrafficStats.getTotalRxBytes();
-					DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.00");
-					setText(DecimalFormatfnum.format(speed) + "K/s");
-					update();
-				super.handleMessage(msg);
-			}};
-			totalRxBytes = mTrafficStats.getTotalRxBytes();
-			mTrafficHandler.sendEmptyMessage(0);
+    public void updateTraffic() {
+	mTrafficHandler = new Handler() {
+	@Override
+	public void handleMessage(Message msg) {
+	    speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / 1024 /3;
+	    totalRxBytes = mTrafficStats.getTotalRxBytes();
+	    DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.00");
+	    setText(DecimalFormatfnum.format(speed) + "K/s");
+	    update();
+	    super.handleMessage(msg);
+	}};
+            totalRxBytes = mTrafficStats.getTotalRxBytes();
+	    mTrafficHandler.sendEmptyMessage(0);
     }
 	
-	public void update() {
-		mTrafficHandler.removeCallbacks(mRunnable);
-		mTrafficHandler.postDelayed(mRunnable, 3000);
+    public void update() {
+	mTrafficHandler.removeCallbacks(mRunnable);
+	mTrafficHandler.postDelayed(mRunnable, 3000);
 	}
     
-	Runnable mRunnable =new Runnable(){
-		@Override
-		public void run() {
-			mTrafficHandler.sendEmptyMessage(0);
-		}
-	};
+	Runnable mRunnable =new Runnable() {
+        @Override
+	public void run() {
+	    mTrafficHandler.sendEmptyMessage(0);
+	}
+    };
 
-    private void updateSettings(){ 	
-		ContentResolver resolver = getContext().getContentResolver();
-		showTraffic = (Settings.System.getInt(resolver,
-                    Settings.System.STATUS_BAR_TRAFFIC, 1) == 1);
-	    ConnectivityManager connectivityManager = (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-		if(showTraffic && connectivityManager.getActiveNetworkInfo().isConnected()) {
-			if (mAttached) {
-				updateTraffic();           
-			}
-			setVisibility(View.VISIBLE);
-		} else
+    private void updateSettings() { 	
+	ContentResolver resolver = getContext().getContentResolver();
+	showTraffic = (Settings.System.getInt(resolver,
+                   Settings.System.STATUS_BAR_TRAFFIC, 0) == 1);
+	   ConnectivityManager connectivityManager = (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+	if (showTraffic && connectivityManager.getActiveNetworkInfo().isConnected()) {
+            if (mAttached) {
+		updateTraffic();           
+	    }
+	    setVisibility(View.VISIBLE);
+	} else {
             setVisibility(View.GONE);
+        }
     }
 }
