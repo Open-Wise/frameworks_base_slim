@@ -175,7 +175,8 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
     private int oldIconIndex = -1;
     private float initialX = 0;
     private float initialY = 0;
-    
+    private float mHaloSize = 1.0f;
+
     // Halo dock position
     SharedPreferences preferences;
     private String KEY_HALO_POSITION_Y = "halo_position_y";
@@ -266,10 +267,10 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
         mRoot = this;
 
         // Init variables
-        BitmapDrawable bd = (BitmapDrawable) mContext.getResources().getDrawable(R.drawable.halo_bg);
-        mIconSize = bd.getBitmap().getWidth();
+        mHaloSize = Settings.System.getFloat(mContext.getContentResolver(),
+                Settings.System.HALO_SIZE, 1.0f);
+        mIconSize = (int)(mContext.getResources().getDimensionPixelSize(R.dimen.halo_bubble_size) * mHaloSize);
         mIconHalfSize = mIconSize / 2;
-
         mTriggerPos = getWMParams();
 
         // Init colors
@@ -723,7 +724,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                             int items = mNotificationData.size();
 
                             // This will be the lenght we are going to use
-                            int indexLength = (mScreenWidth - mIconSize * 2) / items;
+                            int indexLength = ((int)(mScreenWidth * 0.9f) - mIconSize) / items;
 
                             // Calculate index
                             mMarkerIndex = mTickerLeft ? (items - deltaX / indexLength) - 1 : (deltaX / indexLength);
@@ -809,7 +810,6 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                                 }
                             } else {
                                 setIcon(mMarkerIndex);
-
                                 NotificationData.Entry entry = mNotificationData.get(mMarkerIndex);
                                 String text = "";
                                 if (entry.notification.notification.tickerText != null) {
@@ -887,6 +887,17 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
             mMarkerB = BitmapFactory.decodeResource(mContext.getResources(),
                     R.drawable.halo_marker_b);
 
+            if (mHaloSize != 1.0f) {
+                mBigRed = Bitmap.createScaledBitmap(mBigRed, (int)(mBigRed.getWidth() * mHaloSize),
+                        (int)(mBigRed.getHeight() * mHaloSize), true);
+                mMarker = Bitmap.createScaledBitmap(mMarker, (int)(mMarker.getWidth() * mHaloSize),
+                        (int)(mMarker.getHeight() * mHaloSize), true);
+                mMarkerT = Bitmap.createScaledBitmap(mMarkerT, (int)(mMarkerT.getWidth() * mHaloSize),
+                        (int)(mMarkerT.getHeight() * mHaloSize), true);
+                mMarkerB = Bitmap.createScaledBitmap(mMarkerB, (int)(mMarkerB.getWidth() * mHaloSize),
+                        (int)(mMarkerB.getHeight() * mHaloSize), true);
+            }
+
             mMarkerPaint.setAntiAlias(true);
             mMarkerPaint.setAlpha(0);
             xPaint.setAntiAlias(true);
@@ -933,11 +944,11 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
             int b = (int) (10 * scale + 0.5f);
 
             mHaloTextViewR.setText(tickerText);
-            mHaloTextViewR.setPadding(l, t, r, b);
+            // mHaloTextViewR.setPadding(l, t, r, b);
             mHaloTextViewR.setGravity(Gravity.CENTER_HORIZONTAL);
             mHaloTextViewR.setMaxLines(2);
             mHaloTextViewL.setText(tickerText);
-            mHaloTextViewL.setPadding(r, t, l, b);
+            // mHaloTextViewL.setPadding(r, t, l, b);
             mHaloTextViewL.setGravity(Gravity.CENTER_HORIZONTAL);
             mHaloTextViewL.setMaxLines(2);
 
@@ -1076,7 +1087,7 @@ public class Halo extends FrameLayout implements Ticker.TickerCallback {
                 if (y > 0 && mNotificationData != null && mNotificationData.size() > 0) {
                     int pulseY = mHaloY + mIconHalfSize - mMarker.getHeight() / 2;
                     int items = mNotificationData.size();
-                    int indexLength = (mScreenWidth - mIconSize * 2) / items;
+                    int indexLength = ((int)(mScreenWidth * 0.9f) - mIconSize) / items;
 
                     for (int i = 0; i < items; i++) {
                         float pulseX = mTickerLeft ? (mIconSize * 1.15f + indexLength * i)
