@@ -2718,40 +2718,10 @@ public final class Settings {
         public static final String HALO_ENABLED = "halo_enabled";
 
         /**
-         * HALO speech bubble color
-         * @hide
-         */
-        public static final String HALO_BUBBLE_COLOR = "halo_bubble_color";
-
-        /**
-         * HALO speech bubble text color
-         * @hide
-         */
-        public static final String HALO_BUBBLE_TEXT_COLOR = "halo_bubble_text_color";
-
-        /**
          * HALO size fraction, default is 1.0f (normal)
          * @hide
          */
         public static final String HALO_SIZE = "halo_size";
-
-        /**
-         * HALO circle bg color.
-         * @hide
-         */
-        public static final String HALO_CIRCLE_COLOR = "halo_circle_color";
-
-        /**
-         * HALO colors
-         * @hide
-         */
-        public static final String HALO_COLORS = "halo_colors";
-
-        /**
-         * HALO effect color
-         * @hide
-         */
-        public static final String HALO_EFFECT_COLOR = "halo_effect_color";
   
         /**
          * HALO, should default to 0 (no, do not show)
