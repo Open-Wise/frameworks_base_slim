@@ -578,24 +578,7 @@
         <xliff:g id="number">%d</xliff:g>
     </string>
 
-    <!--  Target/Action Strings -->
-    <string name="action_home">Home</string>
-    <string name="action_back">Back</string>
-    <string name="action_recents">Recents</string>
-    <string name="action_screenshot">Screenshot</string>
-    <string name="action_menu">Menu</string>
-    <string name="action_ime">Open IME Switcher</string>
-    <string name="action_kill">Kill task</string>
-    <string name="action_power">Power</string>
-    <string name="action_notifications">Notifications</string>
-    <string name="action_qs">Quicksettings</string>
-    <string name="action_lastapp">Last App</string>
-    <string name="action_none">Empty</string>
-
-    <string name="toggle_ring_vib">Ring/Vib - Toggle</string>
-    <string name="toggle_ring_silent">Ring/Silent - Toggle</string>
-    <string name="toggle_ring_vib_silent">Ring/Vib/Silent - Toggle</string>
-    <string name="toggle_widgets">Widgets - Toggle</string>
+    <!--  General action Strings -->
     <string name="widgets">Widgets</string>
     <string name="app_killed_message">App Killed</string>
 
@@ -705,8 +688,7 @@
     <string name="halo_hide">Hide</string>
     <string name="halo_clear_all">Clear all notifications</string>
     <string name="halo_silence">Hide and silence until woken</string>
-    <string name="halo_tutorial1">I am HALO.</string>
-    <string name="halo_tutorial2">Double-tap-drag to move me around, drag to task.</string>
-    <string name="halo_tutorial3">Change my behavior in the settings.</string>
-
+    <string name="halo_tutorial1">I am HALO</string>
+    <string name="halo_tutorial2">Double-tap-drag to move me around, drag to task</string>
+    <string name="halo_tutorial3">Change my behavior in the Settings</string>
 </resources>

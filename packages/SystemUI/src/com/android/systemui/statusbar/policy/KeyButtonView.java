@@ -371,11 +371,13 @@ public class KeyButtonView extends ImageView {
 
         setDrawingAlpha(BUTTON_QUIESCENT_ALPHA);
 
-        if (mGlowBG != null) {
-            int defaultColor = mContext.getResources().getColor(
+        mGlowBGColor = Settings.System.getInt(resolver,
+                Settings.System.NAVIGATION_BAR_GLOW_TINT, -2);
+
+            if (mGlowBGColor == -2) {
+                mGlowBGColor = mContext.getResources().getColor(
                     com.android.internal.R.color.white);
-            mGlowBGColor = Settings.System.getInt(resolver,
-                    Settings.System.NAVIGATION_BAR_GLOW_TINT, defaultColor);
+            }
 
             if (mGlowBGColor == Integer.MIN_VALUE) {
                 mGlowBGColor = defaultColor;

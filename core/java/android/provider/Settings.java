@@ -2486,11 +2486,11 @@ public final class Settings {
 
         /**
          * Defines the shortcuts to be shown on lockscreen
-         * Usage is like this: target:icon|target:icon|target:icon
-         * if :icon is not set, default application icon will be used
+         * Usage is like this: target|icon|target|icon|target|icon
+         * if icon is not set, default application icon will be used
          * @hide
          */
-        public static final String LOCKSCREEN_SHORTCUTS = "lockscreen_shortcuts";
+        public static final String LOCKSCREEN_SHORTCUTS_CONFIG = "lockscreen_shortcuts_config";
 
         /**
          * Whether shorcuts open with normal or longpress
@@ -2807,12 +2807,6 @@ public final class Settings {
          */
         public static final String PIE_BUTTONS_CONFIG = "pie_buttons_config";
 
-       /**
-        *
-        * @hide
-        */
-        public static final String PIE_LONG_PRESS_ENABLE = "pie_long_press_enable";
-
         /**
          * @hide
          */
@@ -2822,12 +2816,6 @@ public final class Settings {
          * @hide
          */
         public static final String PIE_BUTTONS_CONFIG_SECOND_LAYER = "pie_buttons_config_second_layer";
-
-       /**
-        *
-        * @hide
-        */
-        public static final String PIE_LONG_PRESS_ENABLE_SECOND_LAYER = "pie_long_press_enable_second_layer";
 
         /**
          * Quick Settings Panel Tiles to Use
@@ -3863,13 +3851,7 @@ public final class Settings {
         /**
          * @hide
          */
-        public static final String SYSTEMUI_NAVBAR_CONFIG= "systemui_navbar_config";
-
-       /**
-        *
-        * @hide
-        */
-        public static final String SYSTEMUI_NAVBAR_LONG_ENABLE = "systemui_navbar_long_enable";
+        public static final String SYSTEMUI_NAVBAR_CONFIG = "systemui_navbar_config";
 
         /**
          * @hide
@@ -3911,12 +3893,6 @@ public final class Settings {
             "navigation_bar_glow_duration_off",
             "navigation_bar_glow_duration_on",
         };
-
-       /**
-        *
-        * @hide
-        */
-        public static final String SYSTEMUI_NAVRING_LONG_ENABLE = "systemui_navring_long_enable";
 
         /**
          * Custom navring configuration
@@ -4315,6 +4291,12 @@ public final class Settings {
             Secure.WIFI_WATCHDOG_PING_TIMEOUT_MS;
 
         /**
+         * Hide carrier information on notification drawer
+         * @hide
+         */
+        public static final String NOTIFICATION_HIDE_CARRIER = "notification_hide_carrier";
+
+        /**
          * @hide
          * Show Wifi network name in notification shade
          * 0 - don't show
@@ -4391,24 +4373,10 @@ public final class Settings {
         public static final String NOTIFICATION_VIBRATE_DURING_ALERTS_DISABLED = "vibrate_while_no_alerts";
 
         /**
-         * Whether to enable notification shortcuts (toggle)
-         *
-         * @hide
-         */
-
-        public static final String NOTIFICATION_SHORTCUTS_TOGGLE = "pref_notification_shortcuts_toggle";
-
-        /**
-         * Stores the number of notification shortcuts to display settings for
-         * @hide
-         */
-        public static final String NOTIFICATION_SHORTCUTS_QUANTITY = "pref_notification_shortcuts_quantity";
-
-        /**
          * Stores values for notification shortcut targets
          * @hide
          */
-        public static final String NOTIFICATION_SHORTCUTS_TARGETS = "notification_shortcuts_targets";
+        public static final String NOTIFICATION_SHORTCUTS_CONFIG = "notification_shortcuts_config";
 
         /**
          * Stores the value for notification shortcuts icon color
@@ -4420,13 +4388,7 @@ public final class Settings {
          * Whether to colorize the default application icons
          * @hide
          */
-        public static final String NOTIFICATION_SHORTCUTS_COLORIZE_TOGGLE = "notification_shortcuts_colorize_toggle";
-
-        /**
-         * Whether to colorize the default application icons
-         * @hide
-         */
-        public static final String NOTIFICATION_SHORTCUTS_HIDE_CARRIER = "notification_shortcuts_hide_carrier";
+        public static final String NOTIFICATION_SHORTCUTS_COLOR_MODE = "notification_shortcuts_color_mode";
 
         /**
          * How long to wait between playing notification sounds from a package
