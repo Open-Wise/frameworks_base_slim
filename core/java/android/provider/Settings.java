@@ -3621,6 +3621,12 @@ public final class Settings {
          public static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
         /**
+         * Able to change MEDIA volume steps (default is 15)
+         * @hide
+         */
+        public static final String AUDIO_VOLUME_STEPS = "audio_volume_steps";
+
+        /**
          * Whether to unlock the screen with the home key.  The value is boolean (1 or 0).
          * @hide
          */
@@ -7377,6 +7383,7 @@ public final class Settings {
          * @hide
          */
         public static final String AUDIO_SAFE_VOLUME_STATE = "audio_safe_volume_state";
+
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
