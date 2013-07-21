@@ -272,8 +272,22 @@
     <!-- [CHAR LIMIT=10] Running services, summary of foreground processes -->
     <string name="service_used_mem"><xliff:g id="memory">%1$s</xliff:g> 사용됨</string>
 
+    <!-- Notification drawer toasts -->
+    <string name="calendar_error_alert">설치된 달력앱이 없습니다.</string>
+    <string name="clock_error_alert">설치된 시계앱이 없습니다.</string>
+    <string name="qs_shortcut_error">아이콘을 변경하려면 바로가기를 먼저 추가하세요!</string>
+
+    <!-- Battery status in pie controls -->
+    <string name="pie_battery_status_charging">충전 중 (<xliff:g id="percent">%d</xliff:g>%%)</string>
+    <string name="pie_battery_status_full">충전됨</string>
+    <string name="pie_battery_status_discharging"><xliff:g id="percent">%d</xliff:g>%% 사용 가능</string>
+
+    <!-- HALO -->
     <string name="halo_dismiss">알림 지우기</string>
     <string name="halo_clear_all">모든 알림 지우기</string>
     <string name="halo_hide">숨기기</string>
     <string name="halo_silence">깨어날때 까지 숨기고 무음</string>
+    <string name="halo_tutorial1">저는 HALO 입니다</string>
+    <string name="halo_tutorial2">두번 탭하고 절 움식이실 수 있습니다, 드래그로 작업하고요</string>
+    <string name="halo_tutorial3">설정에서 제 행동을 바꾸실 수 있습니다</string>
 </resources>
