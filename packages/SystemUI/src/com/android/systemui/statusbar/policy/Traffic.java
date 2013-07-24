@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.TrafficStats;
 import android.os.Handler;
 import android.os.Message;
@@ -112,15 +113,15 @@ public class Traffic extends TextView {
 	mTrafficHandler = new Handler() {
 	@Override
 	public void handleMessage(Message msg) {
-	    speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / 1024 /3;
-	    totalRxBytes = mTrafficStats.getTotalRxBytes();
-	    DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.00");
-	    setText(DecimalFormatfnum.format(speed) + "K/s");
-	    update();
-	    super.handleMessage(msg);
-	}};
-            totalRxBytes = mTrafficStats.getTotalRxBytes();
-	    mTrafficHandler.sendEmptyMessage(0);
+	        speed = (mTrafficStats.getTotalRxBytes() - totalRxBytes) / 1024 /3;
+	        totalRxBytes = mTrafficStats.getTotalRxBytes();
+	        DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.00");
+	        setText(DecimalFormatfnum.format(speed) + "K/s");
+	        update();
+	        super.handleMessage(msg);
+	    }};
+                totalRxBytes = mTrafficStats.getTotalRxBytes();
+	        mTrafficHandler.sendEmptyMessage(0);
     }
 	
     public void update() {
@@ -139,14 +140,20 @@ public class Traffic extends TextView {
 	ContentResolver resolver = getContext().getContentResolver();
 	showTraffic = (Settings.System.getInt(resolver,
                    Settings.System.STATUS_BAR_TRAFFIC, 0) == 1);
-	   ConnectivityManager connectivityManager = (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-	if (showTraffic && connectivityManager.getActiveNetworkInfo().isConnected()) {
-            if (mAttached) {
-		updateTraffic();           
-	    }
-	    setVisibility(View.VISIBLE);
-	} else {
-            setVisibility(View.GONE);
-        }
+	ConnectivityManager connectivityManager = (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo Wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo Data = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (Wifi.isConnected() || Data.isConnected()) {
+	   if (showTraffic && connectivityManager.getActiveNetworkInfo().isConnected()) {
+               if (mAttached) {
+		   updateTraffic();           
+	       }
+	  setVisibility(View.VISIBLE);
+	  } else {
+          setVisibility(View.GONE);
+          Settings.System.putInt(resolver,
+                  Settings.System.STATUS_BAR_TRAFFIC, 0);
+          }
+       }
     }
 }
